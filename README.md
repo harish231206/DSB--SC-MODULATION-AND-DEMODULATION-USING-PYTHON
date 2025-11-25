@@ -31,10 +31,10 @@ __PROGRAM__:
 ```
 import numpy as np
 import matplotlib.pyplot as plt
-Ac = 19.8
-fc = 5600
-Am = 9.9
-fm = 560
+Ac = 10.1
+fc = 5800
+Am = 20.2
+fm = 580
 fs = 70000
 t = np.arange(0, 2/fm, 1/fs)
 Wm = 2 * np.pi * fm
