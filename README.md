@@ -27,12 +27,43 @@ __Procedure__:
 5) (Optional) Add noise
 6) Coherent demodulation (multiply by synchronized carrier)
 7) Low-pass filter to recover message
+__PROGRAM__:   
+```
+import numpy as np
+import matplotlib.pyplot as plt
+Ac = 19.8
+fc = 5600
+Am = 9.9
+fm = 560
+fs = 70000
+t = np.arange(0, 2/fm, 1/fs)
+Wm = 2 * np.pi * fm
+Wc = 2 * np.pi * fc
+Em = Am * np.sin(Wm * t)
+Ec = Ac * np.sin(Wc * t)
+Edsbsc = ((Am / 2) * np.cos((Wc - Wm) * t)) - ((Am / 2) * np.cos((Wc + Wm) * t))
+plt.figure(figsize=(10, 6))
+plt.subplot(3, 1, 1)
+plt.plot(t, Em)
+plt.grid()
+plt.subplot(3, 1, 2)
+plt.plot(t, Ec)
 
+plt.grid()
+plt.subplot(3, 1, 3)
+plt.plot(t, Edsbsc)
+plt.grid()
+plt.tight_layout()
+plt.show()
+```
    __Tabulation__:
+   
 ![WhatsApp Image 2025-11-26 at 00 13 16_5b6dd8fa](https://github.com/user-attachments/assets/6477c719-de16-470c-a2d3-99254cc74010)
 
    __Output__:
+   
 ![WhatsApp Image 2025-11-26 at 00 15 10_e7a35835](https://github.com/user-attachments/assets/c6beeb46-4b28-46f0-801e-a974dcde9451)
 
    __Result__:
+   
 ![WhatsApp Image 2025-11-26 at 00 13 23_c9253fa5](https://github.com/user-attachments/assets/c667baef-f095-4c16-903f-a491903bbc5e)
